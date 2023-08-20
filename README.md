@@ -28,4 +28,6 @@
  
  jar file has been added in the sqlite --> Java folder
 
-I am working on storing data in db, currently connection is closing by itself after establishing connection with db and I am looking into the issue.
+I am working on storing data in db, currently connection is closing by itself after establishing connection with db and I am looking into the issue. 
+
+Update: found that database is throwing error saying its readonly. I am trying to resolve the issue. 
