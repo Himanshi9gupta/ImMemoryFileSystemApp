@@ -1,4 +1,4 @@
-# ImMemoryFileSystemApp
+# InMemoryFileSystemApp
 ****************** START APPLICATION *********************
 
 1. Open project folder in eclipse. 
