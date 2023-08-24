@@ -11,23 +11,26 @@ public class Users extends Permissions{
 	String role;
 	static HashMap<String,String> userList = new HashMap<>();
 	String id = UUID.randomUUID().toString();
-	Connect conn = new Connect();
+	Connect connect = new Connect();
 	
 	public Users(String user, String role) {
 		super(user, role);
 	}
 	
-	 public String addUser(String user, String role){
+	 @SuppressWarnings("static-access")
+	public String addUser(String user, String role){
 		if(!userList.containsKey(user)) {
 			id = UUID.randomUUID().toString();
 			userList.put(user, id);
-			  String sql = "insert into users values(" + id+ ","+user+", lastName,"+role+")";
-				try {
-					Statement stmt = (Statement) conn.conn.createStatement();
-					ResultSet rs = ((java.sql.Statement) stmt).executeQuery(sql);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
+//			  String sql = "insert into users values(" + id+ ","+user+", lastName,"+role+")";
+//				try {
+//					
+//					Statement stmt = null;
+//					stmt = (Statement) connect.conn.createStatement();
+//					ResultSet rs = ((java.sql.Statement) stmt).executeQuery(sql);
+//				} catch (SQLException e) {
+//					e.printStackTrace();
+//				}
 		}
 		System.out.println("UserList: " + userList);
 		return "User added successfully in the list.";

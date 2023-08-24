@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.sql.*;
 public class Connect {
 
-	public static void connect() {
+	public static Connection connect() {
         Connection conn = null;
         try {
             // db parameters
@@ -28,6 +28,7 @@ public class Connect {
                 System.out.println(ex.getMessage());
             }
         }
+		return conn;
     }
 
 }

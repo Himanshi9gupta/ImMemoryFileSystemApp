@@ -35,17 +35,15 @@ public class Directories extends Permissions{
 	} 
 
 	static String deleteDirectory (String directoryName,  String path, String role, String username) { 
-		System.out.println("username inside delete : " + username + ", role: " + role + ", directoryName: " + directoryName);
-	
 		if(directories.containsKey(directoryName) && Permissions.hasPermissions(username)) {
 			directories.remove(directoryName,path);
-			System.out.println("Directories list: " + directories);
+			System.out.println("Directories list after deleting: " + directories);
 			return "Directory deleted successfully.";
 		}
 		else {
-			System.out.println("directory not present in map!");
+			return "Directory not present in map!";
 		}
-		return "User doesn't have sufficient priviledges.";
+		
 	} 
 	
 	static String updateDirectory (String directoryName,  String path, String role) { 

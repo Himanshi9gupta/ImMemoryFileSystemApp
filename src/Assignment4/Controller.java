@@ -15,7 +15,7 @@ public class Controller {
 	static HashMap<String, String> fileSystemInputMap = new HashMap<>();
 	public void apiMethod() throws IOException {
 		 int serverPort = 8080;
-//		 Connect conn = new Connect();
+		 Connect conn = new Connect();
 
 		    HttpServer server = HttpServer.create(new InetSocketAddress(serverPort), 0);
 		    
@@ -23,7 +23,7 @@ public class Controller {
 		    server.createContext("/user", (exchange -> {
 	    	  InputStream requestBody = exchange.getRequestBody();  
 	            BufferedReader reader = new BufferedReader(new InputStreamReader(requestBody));
-	            
+	
 	            StringBuilder requestData = new StringBuilder();
 	           
 	            String line = reader.readLine();
@@ -114,7 +114,7 @@ public class Controller {
 		
 		 		FileSystem fileSystem = new FileSystem(directoryName, role, path, name);
 				//fileSystem.createDirectory(directoryName, path, role);
-				String response =fileSystem.createDirectory(directoryName, path, role) + fileSystem.ListOfDirectories().toString();
+				String response =Directories.createDirectory(directoryName, path, role) + fileSystem.ListOfDirectories().toString();
 		 		  
 		        OutputStream output = exchange.getResponseBody();
 		        output.write(response.getBytes());
@@ -140,9 +140,8 @@ public class Controller {
 		        String path = fileSystemInputMap.get("path");
 		        String directoryName = fileSystemInputMap.get("directoryName");
 		
-		 		FileSystem fileSystem = new FileSystem(directoryName, role,path, name);
-				
-				String response =fileSystem.deleteDirectory(directoryName, path, role, name);
+		 		
+				String response =Directories.deleteDirectory(directoryName, path, role, name);
 		 		  
 		        OutputStream output = exchange.getResponseBody();
 		        output.write(response.getBytes());

@@ -2,6 +2,8 @@ package Assignment4;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import javax.swing.*;
+
+import java.beans.Statement;
 import java.sql.*;
 
 
@@ -17,7 +19,7 @@ public class Connect {
             Class.forName("org.sqlite.JDBC");
        
             conn = DriverManager.getConnection(url);
-            JOptionPane.showMessageDialog(null, url);
+            //JOptionPane.showMessageDialog(null, url);
             JOptionPane.showMessageDialog(null, "Connection to SQLite has been established.", "message", JOptionPane.CLOSED_OPTION);
             System.out.println("Connection to SQLite has been established.");
             return conn;
