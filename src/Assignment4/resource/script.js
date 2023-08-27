@@ -8,14 +8,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
    submitButton.addEventListener("click", function() {
       	var name = document.getElementById("username").value;
-	var role = document.getElementById("role").value;
+		var role = document.getElementById("role").value;
+		var lastName = document.getElementById("lastName").value;
 	    var requestData = {
 	            name: name.toUpperCase(),
+	            lastName: lastName.toUpperCase(),
 	            role: role.toUpperCase()
 	        };
 	        
 	        if(name === "" && role === ""){
-			alert("Username and role cannot be empty!");
+				alert("Username and role cannot be empty!");
 			return;
 		}
         // Create an XMLHttpRequest object
