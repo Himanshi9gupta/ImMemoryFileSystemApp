@@ -50,7 +50,6 @@ public class Controller {
 			System.out.println(userInputMap);
 
 			// setting headers
-			
 			setHeaders(exchange);
 			
 			exchange.sendResponseHeaders(200, 0);

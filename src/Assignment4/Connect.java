@@ -8,7 +8,7 @@ import java.sql.*;
 
 public class Connect {
 	 static Connection conn = null;
-	public static Connection dbConnect() throws ClassNotFoundException {
+	public Connection dbConnect() throws ClassNotFoundException {
        
         try {
             // db parameters

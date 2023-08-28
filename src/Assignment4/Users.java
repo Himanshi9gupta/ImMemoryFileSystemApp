@@ -20,7 +20,7 @@ public class Users extends Permissions {
 	@SuppressWarnings("static-access")
 	public String addUser(String user, String lastName, String role, Connection connection) {
 	 if(!userList.containsKey(user)) {
-		int max = 100;
+		int max = 1000;
 		int min = 1;
 		int range = max - min + 1;
 		int id = (int)(Math.random() * range) + min;
@@ -29,10 +29,9 @@ public class Users extends Permissions {
 //		String sql2 = "INSERT INTO users (id, firstName, lastName, Role) VALUES ("+id+",'Adam', 'woods','Regular')";
 		String sql = "INSERT INTO users (id, firstName, lastName, Role) VALUES (" + query + ")";
 		System.out.println("sql: " + sql);
-		// System.out.println("sql2: " + sql2);
 
 		try {
-			// Connection connection = connect.dbConnect();
+			
 			Statement stmt = connection.createStatement();
 			stmt.executeUpdate(sql);
 			stmt.close();
@@ -47,7 +46,6 @@ public class Users extends Permissions {
 	}
 
 	public String removeUser(String user) {
-
 		if (userList.containsKey(id)) {
 			userList.remove(user, id);
 		}
@@ -55,3 +53,11 @@ public class Users extends Permissions {
 	}
 
 }
+
+
+//INSERT INTO Directory (id, Path, DirectoryName, CreatedDate, UpdatedDate, User) VALUES ('1', '/', 'root', '25-08-2023', null, 'Carol');
+
+
+
+
+
