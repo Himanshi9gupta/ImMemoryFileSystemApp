@@ -47,8 +47,8 @@ public abstract class Files implements FilesInfo{
 		return this.createdDate;
 	}
 	
-	void createFile(String path, String user,String name ) {
-		if(!files.containsKey(name) && Permissions.hasPermissions(user)) {
+		void createFile(String path, String user,String name, Connection connection ) {
+		if(!files.containsKey(name) && Permissions.hasPermissions(user, connection)) {
 			files.put(name,path);
 			System.out.println("File created successfully.");
 		}
@@ -58,8 +58,8 @@ public abstract class Files implements FilesInfo{
 
 	}
 	
-	void deleteDirectory (String path, String user, String name) { 
-		if(files.containsKey(name) && Permissions.hasPermissions(user)) {
+	void deleteDirectory (String path, String user, String name, Connection connection ) { 
+		if(files.containsKey(name) && Permissions.hasPermissions(user, connection)) {
 			files.remove(name,path);
 			System.out.println("File deleted successfully.");
 		}
@@ -67,8 +67,8 @@ public abstract class Files implements FilesInfo{
 			System.out.println("User doesn't have sufficient priviledges.");
 		}
 	} 
-	void updateDirectory (String path, String user, String name) { 
-		if(files.containsKey(name) && Permissions.hasPermissions(user)) {
+	void updateDirectory (String path, String user, String name, Connection connection ) { 
+		if(files.containsKey(name) && Permissions.hasPermissions(user, connection)) {
 			files.replace(name,path);
 			System.out.println("File updated successfully.");
 		}
