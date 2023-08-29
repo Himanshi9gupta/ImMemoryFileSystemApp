@@ -20,7 +20,7 @@ public class Controller {
 	static HashMap<String, String> fileSystemInputMap = new HashMap<>();
 
 	public void apiMethod(Connection connection) throws IOException {
-		int serverPort = 8080;
+				int serverPort = 8080;
 
 		HttpServer server = HttpServer.create(new InetSocketAddress(serverPort), 0);
 
@@ -110,10 +110,9 @@ public class Controller {
 			String path = fileSystemInputMap.get("path");
 			String directoryName = fileSystemInputMap.get("directoryName");
 
-			FileSystem fileSystem = new FileSystem(directoryName, role, path, name);
-			// fileSystem.createDirectory(directoryName, path, role);
-			String response = Directories.createDirectory(directoryName, path, role)
-					+ fileSystem.ListOfDirectories().toString();
+			FileSystem fileSystem = new FileSystem(directoryName, role, path, name, connection);
+//			Directories.createDirectory(directoryName, path, role, connection);
+			String response = Directories.createDirectory(directoryName, path, role, connection) + fileSystem.ListOfDirectories(connection).toString();
 
 			OutputStream output = exchange.getResponseBody();
 			output.write(response.getBytes());
@@ -137,7 +136,7 @@ public class Controller {
 			String path = fileSystemInputMap.get("path");
 			String directoryName = fileSystemInputMap.get("directoryName");
 
-			String response = Directories.deleteDirectory(directoryName, path, role, name);
+			String response = Directories.deleteDirectory(directoryName, path, role, name, connection);
 
 			OutputStream output = exchange.getResponseBody();
 			output.write(response.getBytes());
