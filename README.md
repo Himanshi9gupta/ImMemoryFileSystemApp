@@ -17,16 +17,14 @@
 2. "Add" btn: use this button to add user in the hashmap. It will populate an alert message saying that, 
    the user has been added successfully.
  
-3. After adding user, now you can create or delete a directory based on user permissions. 
+3. After adding user, now you can create or delete a directory based on user permissions using create btn and Delete btn. 
 
-4. you can validate the functionality in eclipse console. 
+4. please validate the functionality in eclipse console. 
    (Delete functionality is being called twice, I will fix that issue later)
  
  
  ***************************** DB connection prerequisites ******************************
 
- Rubric: 
- 
  Add jar file to the classpath and add org.sqlite.JDBC variable with path as jar file 
  
  jar file has been added in the sqlite --> Java folder
