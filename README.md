@@ -24,6 +24,8 @@
  
  
  ***************************** DB connection prerequisites ******************************
+ Rubric: 
+ 
  Add jar file to the classpath and add org.sqlite.JDBC variable with path as jar file 
  
  jar file has been added in the sqlite --> Java folder
