@@ -9,8 +9,8 @@ public class FileSystem extends Directories{
 	String role;
 	String path;
 	String name;
-	public FileSystem(String user, String role, String path, String name) {
-		super(user, role, path, name);
+	public FileSystem(String user, String role, String path, String name, Connection connection) {
+		super(user, role, path, name, connection);
 		this.user = user;
 		this.name = name;
 		this.role = role;
@@ -20,7 +20,7 @@ public class FileSystem extends Directories{
 	}
 
 	private void initFileSystem() {
-	      this.root = new Directories(name, role, path, user);
+	      //this.root = new Directories(name, role, path, user);
 	      this.loggedInUser = user;
 	      }
 	
@@ -36,13 +36,12 @@ public class FileSystem extends Directories{
 		return instance;  
 	} 
 	 
-	public static void initializeFileSystem(String user, String name, String role, String path) { 
+	public static void initializeFileSystem(String user, String name, String role, String path, Connection connection) { 
 		if (instance == null) { 
-		 	instance = new FileSystem(name, role, path, user); 
+		 	instance = new FileSystem(name, role, path, user, connection); 
 		 	getInstance();
 		} else {  
 			throw new IllegalStateException("FileSystem has already been initialized.");  
 		} 
 	 }  
-
 }
