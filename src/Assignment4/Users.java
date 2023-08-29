@@ -25,9 +25,9 @@ public class Users extends Permissions {
 		int range = max - min + 1;
 		int id = (int)(Math.random() * range) + min;
 		
-		String query = id + ", '" + user + "',' " + lastName + "', '" + role + "'";
+		String query = id + ", '" + user + "', '" + role + "'";
 //		String sql2 = "INSERT INTO users (id, firstName, lastName, Role) VALUES ("+id+",'Adam', 'woods','Regular')";
-		String sql = "INSERT INTO users (id, firstName, lastName, Role) VALUES (" + query + ")";
+		String sql = "INSERT INTO users (id, Name, Role) VALUES (" + query + ")";
 		System.out.println("sql: " + sql);
 
 		try {

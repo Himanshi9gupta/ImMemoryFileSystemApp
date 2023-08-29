@@ -9,10 +9,9 @@ document.addEventListener("DOMContentLoaded", function() {
       submitButton.addEventListener("click", function() {
       	var name = document.getElementById("username").value;
 		var role = document.getElementById("role").value;
-		var lastName = document.getElementById("lastName").value;
+		//var lastName = document.getElementById("lastName").value;
 	    var requestData = {
 	            name: name.toUpperCase(),
-	            lastName: lastName.toUpperCase(),
 	            role: role.toUpperCase()
 	        };
 	        
@@ -76,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     console.log(response);
                     
                     var content =  document.getElementById("tablearea");
-                    content.innerHTML(response);
+                    //content.innerHTML(response);
                     
                     alert("Directory created successfully!");
                 } else {
