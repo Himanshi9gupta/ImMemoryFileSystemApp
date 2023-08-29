@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	
 
-   submitButton.addEventListener("click", function() {
+      submitButton.addEventListener("click", function() {
       	var name = document.getElementById("username").value;
 		var role = document.getElementById("role").value;
 		var lastName = document.getElementById("lastName").value;
@@ -46,8 +46,8 @@ document.addEventListener("DOMContentLoaded", function() {
     
      createBtn.addEventListener("click", function() {
      console.log("clicked");
-      var path = document.getElementById("path").value;
-	var directoryName = document.getElementById("directoryName").value;
+      	var path = document.getElementById("path").value;
+		var directoryName = document.getElementById("directoryName").value;
 	    var requestData = {
 	            directoryName: directoryName,
 	            path: path
@@ -68,11 +68,16 @@ document.addEventListener("DOMContentLoaded", function() {
         xhr.send(JSON.stringify(requestData));
         console.log(JSON.stringify(requestData));
         // Define a callback function to handle the response
+        
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
                     var response = xhr.responseText;
                     console.log(response);
+                    
+                    var content =  document.getElementById("tablearea");
+                    content.innerHTML(response);
+                    
                     alert("Directory created successfully!");
                 } else {
                     console.error('Request failed:', xhr.status, xhr.statusText);
