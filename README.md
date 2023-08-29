@@ -32,4 +32,4 @@
 
 I am working on storing data in db, currently connection is closing by itself after establishing connection with db and I am looking into the issue. 
 
-Update: the issue is now resolved and it is now able to store user and directory in the db tables. To create directory, please the user input in the firstName and lastName to pass username to create directory.
+Update: the issue is now resolved and it is now able to store user and directory in the db tables. To create directory, please add the user input in the firstName and lastName to pass username to create directory.
