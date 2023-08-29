@@ -13,5 +13,6 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/himanshigupta/Downloads/sqlite-jdbc-3.42.0.0.jar"/>
 	<classpathentry kind="var" path="org.sqlite.JDBC" sourcepath="/org.sqlite.JDBC"/>
+	<classpathentry kind="lib" path=".classpath"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
