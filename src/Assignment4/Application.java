@@ -12,7 +12,8 @@ public class Application {
 	static HashMap<String, String> fileSystemInputMap = new HashMap<>();
 
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
-				// starting DB connection
+		// starting DB connection
+
 		Connect connect = new Connect();
 		Connection connection = connect.dbConnect();
 

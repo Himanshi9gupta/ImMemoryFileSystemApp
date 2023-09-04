@@ -1,14 +1,18 @@
 package Assignment4;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashMap;
 
-public abstract class Permissions{
+public abstract class Permissions {
 	static String user;
 	String role;
 	boolean hasPermission;
 	public static final String admin = "ADMIN";
 	public static final String regular = "REGULAR";
-		static HashMap<String, String> userPermission = new HashMap<>();
+	static HashMap<String, String> userPermission = new HashMap<>();
 
 	Permissions(String user, String role) {
 		this.user = user;
