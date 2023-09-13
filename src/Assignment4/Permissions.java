@@ -8,13 +8,13 @@ import java.util.HashMap;
 
 public abstract class Permissions{
 	static String user;
-	String role;
+	static String role;
 	boolean hasPermission;
 	public static final String admin = "ADMIN";
 	public static final String regular = "REGULAR";
 		static HashMap<String, String> userPermission = new HashMap<>();
 
-	Permissions(String user, String role) {
+	public Permissions(String user, String role) {
 		this.user = user;
 		this.role = role;
 		if (!userPermission.containsKey(user)) {
@@ -32,10 +32,9 @@ public abstract class Permissions{
 		return userPermission;
 	}
 
-	public static boolean hasPermissions(String user, Connection connection) {
-		String sql = "SELECT * FROM users WHERE firstName = '" + user + "'";
+	public static boolean hasPermissions(String user, String role, Connection connection) {
+		String sql = "SELECT * FROM users WHERE Name = '" + user + "' AND Role = 'ADMIN'";
 		try {
-
 			Statement stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			//stmt.close();
@@ -44,7 +43,7 @@ public abstract class Permissions{
 			System.out.println(e.getMessage());
 		}
 
-		String role = userPermission.get(user);
+		String role1 = userPermission.get(user);
 		if (userPermission.containsKey(user) && role.equalsIgnoreCase(admin)) {
 			return true;
 		}
@@ -52,7 +51,7 @@ public abstract class Permissions{
 	}
 
 	public static void revokePermissions(String user, Connection connection) {
-		if (hasPermissions(user, connection)) {
+		if (hasPermissions(user, role, connection)) {
 			userPermission.replace(user, regular);
 		}
 

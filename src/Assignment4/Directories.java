@@ -14,8 +14,8 @@ public class Directories extends Permissions{
 	String directoryName;
 	String path;
 	
-	static HashMap<String, String> directories = new HashMap<>(); 
-	
+	static HashMap<String, String> directories = new HashMap<>();
+
 	Directories(String user, String role, String path, String directoryName, Connection connection) {
 		super(user, role);
 		this.path =path;
@@ -36,9 +36,9 @@ public class Directories extends Permissions{
 					directories.put(rs.getString("directoryName"), rs.getString("path"));
 					
 					System.out.println(rs.getInt("id") + "\t" + rs.getString("path") + "\t"
-							+ rs.getString("directoryName") + "\t" + rs.getString("user"));
+							+ rs.getString("directoryName"));
 				}
-			}	
+			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
@@ -47,8 +47,8 @@ public class Directories extends Permissions{
 		return directories;
 	} 
 	
-	static String createDirectory (String directoryName,  String path, String role, Connection connection) { 
-		if(!directories.containsKey(directoryName) && Permissions.hasPermissions(user, connection)) {
+	static HashMap<String, String> createDirectory (String directoryName,  String path, String role, Connection connection) {
+		if(!directories.containsKey(directoryName) && Permissions.hasPermissions(user, role, connection)) {
 			int max = 1000;
 			int min = 1;
 			int id = (int)(Math.random() * max - min + 1) + min;
@@ -61,24 +61,21 @@ public class Directories extends Permissions{
 			executeQuery(sql, connection);
 			
 			directories.put(directoryName,path);
-			return "Directory created successfully.";
+			System.out.println("Directory has been added in the table!");
 		}
-		else {
-			return "User doesn't have sufficient priviledges.";
-		}
+		return ListOfDirectories(connection);
 	} 
 
 	static String deleteDirectory (String directoryName,  String path, String role, String username, Connection connection) { 
-		if(directories.containsKey(directoryName) && Permissions.hasPermissions(username, connection)) {
+		if(Permissions.hasPermissions(username,role, connection)) {
 			
 			String sql = "DELETE FROM Directory WHERE directoryName = '" + directoryName + "'";
 			Statement stmt2;
 			try {
 				stmt2 = connection.createStatement();
 				stmt2.executeUpdate(sql);
-				stmt2.close();
+				//stmt2.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			//executeQuery(sql, connection);
@@ -88,10 +85,10 @@ public class Directories extends Permissions{
 			return "Directory deleted successfully.";
 		}
 		else {
-			return "Directory not present in map!";
+			return "something went wrong when deleting directory!";
 		}
-		
-	} 
+
+	}
 	
 	static void executeQuery (String sql, Connection connection) {
 		try {
@@ -105,14 +102,27 @@ public class Directories extends Permissions{
 		}
 	}
 	
-	static String updateDirectory (String directoryName,  String path, String role, Connection connection) { 
-		if(directories.containsKey(directoryName) && Permissions.hasPermissions(user, connection)) {
+	static String updateDirectory (String directoryName,  String path, String role,String name, Connection connection) {
+		if(Permissions.hasPermissions(user, role, connection)) {
+			String sql = "UPDATE Directory SET DirectoryName = '" + directoryName + "', Path= '" + path + "' WHERE directoryName = '" + directoryName + "'";
+			Statement stmt2;
+			try {
+				stmt2 = connection.createStatement();
+				stmt2.executeUpdate(sql);
+				//stmt2.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			//executeQuery(sql, connection);
+
 			directories.replace(directoryName,path);
+
 			return "Directory updated successfully.";
 		}
 		else {
-			return "User doesn't have sufficient priviledges.";
+			return "something went wrong when updating directory!";
 		}
+
 	} 
 	
 }

@@ -9,14 +9,25 @@
 </head>
 <body> 
 	<Section>
-		<h2>Add User</h2>
+		<h2>Login</h2>
 		<label>User Name: </label>
+		<input id="username1"></input>
+
+		<label>Role: </label>
+		<input id="role1"></input>
+	    <button id="login">Login</button>
+     </Section>
+
+	<Section>
+		<h2>Add User</h2>
+		<label>Name: </label>
 		<input id="username"></input>
 
 		<label>Role: </label>
 		<input id="role"></input>
-	    <button id="myButton">Login</button>
-     </Section>
+		<button id="myButton">Add</button>
+	</Section>
+
       <Section>
 		<h2>File System</h2>
 		<h5> Create and delete directory</h5>
@@ -25,8 +36,8 @@
 		<label>Directory Name: </label>
 		<input id="directoryName"></input>
 	    <button id="createBtn">Create</button>
-	     <button id="deleteBtn">Delete</button>
-
+		  <button id="deleteBtn">Delete</button>
+		  <button id="updateBtn">Update</button>
      </Section>
 	<Section>
 		<h5> Create and delete Files</h5>
@@ -36,8 +47,8 @@
 		<input id="fileName"></input>
 		<button id="fileCreateBtn">Create</button>
 		<button id="fileDeleteBtn">Delete</button>
-
+		<button id="updateFileBtn">Update</button>
 	</Section>
-	<Section id= "tablearea"></Section>
+	<div id= "output"></div>
 </body>
 </html>

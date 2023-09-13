@@ -19,19 +19,21 @@ public class Application {
 		String  sql= "SELECT * from Directory";
 		String files = "SELECT * from Files";
 		String user = "SELECT * from users";
-		String deleteUser = "DELETE FROM Directory WHERE Path = 'null'";
+		//String deleteUser = "DELETE FROM Directory WHERE Path = '/'";
+		String deleteUser = "DELETE FROM users WHERE Name = 'DUMMY'";
+		//String deleteUser = "DELETE FROM Files WHERE path = 'null'";
 		try {
 			Statement stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
-			System.out.println("Directory Table :");
+			System.out.println("**************Directory Table :*******************");
 			{
 				while (rs.next()) {
 					System.out.println(rs.getInt("id") + "\t" + rs.getString("path") + "\t"
-							+ rs.getString("directoryName") + "\t" + rs.getString("user"));
+							+ rs.getString("directoryName"));
 				}
 			}
 			ResultSet dl = stmt.executeQuery(user);
-			System.out.println("Users Table :");
+			System.out.println("*****************Users Table :*********************");
 			{
 				while (dl.next()) {
 					System.out.println(dl.getInt("id") + "\t" + dl.getString("name") + "\t"
@@ -39,7 +41,7 @@ public class Application {
 				}
 			}
 
-			System.out.println("Files Table :");
+			System.out.println("**********************Files Table :************************");
 			ResultSet fl = stmt.executeQuery(files);
 			{
 				while (fl.next()) {
@@ -47,10 +49,9 @@ public class Application {
 							+ fl.getString("Name") + "\t" + fl.getString("user"));
 				}
 			}
-
-//			Statement stmt2 = connection.createStatement();
-//			stmt2.executeUpdate(deleteUser);
-//			stmt2.close();
+			//Statement stmt2 = connection.createStatement();
+			stmt.executeUpdate(deleteUser);
+			stmt.close();
 
 
 		} catch (SQLException e) {

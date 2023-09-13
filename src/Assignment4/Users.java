@@ -42,7 +42,7 @@ public class Users extends Permissions {
 	 }
 
 		System.out.println("UserList: " + userList);
-		return "User added successfully in the list.";
+		return "User is successfully added.";
 	}
 
 	public String removeUser(String user) {
